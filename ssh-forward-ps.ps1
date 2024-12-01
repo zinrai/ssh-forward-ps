@@ -13,7 +13,7 @@ param (
     [string]$user = $env:USERNAME,
 
     [Parameter(Mandatory=$false)]
-    [string]$host = "127.0.0.1"
+    [string]$hostname = "127.0.0.1"
 )
 
 # Function to parse ports from comma-separated string
@@ -92,7 +92,7 @@ try {
 
     # Construct SSH command
     $portForwarding = $forwarding -join " "
-    $sshCommand = "ssh $portForwarding -p $port ${user}@${host}"
+    $sshCommand = "ssh $portForwarding -p $port ${user}@${hostname}"
 
     # Start SSH connection
     Start-SshConnection -sshCommand $sshCommand
